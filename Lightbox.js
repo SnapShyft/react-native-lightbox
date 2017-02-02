@@ -28,6 +28,7 @@ var Lightbox = React.createClass({
     underlayColor:   PropTypes.string,
     backgroundColor: PropTypes.string,
     onOpen:          PropTypes.func,
+    beforeClose:     PropTypes.func,
     onClose:         PropTypes.func,
     springConfig:    PropTypes.shape({
       tension:       PropTypes.number,
@@ -39,8 +40,9 @@ var Lightbox = React.createClass({
   getDefaultProps: function() {
     return {
       swipeToDismiss: true,
-      onOpen: () => {},
-      onClose: () => {},
+      onOpen:       () => {},
+      onClose:      () => {},
+      beforeClose:  () => {}
     };
   },
 
@@ -79,6 +81,7 @@ var Lightbox = React.createClass({
       backgroundColor: this.props.backgroundColor,
       children: this.getContent(),
       onClose: this.onClose,
+      beforeClose: this.beforeClose
     };
   },
 
@@ -121,6 +124,7 @@ var Lightbox = React.createClass({
   },
 
   onClose: function() {
+    this.props.beforeClose();
     this.state.layoutOpacity.setValue(1);
     this.setState({
       isOpen: false,
@@ -131,6 +135,8 @@ var Lightbox = React.createClass({
       this.props.navigator.immediatelyResetRouteStack(routes);
     }
   },
+
+
 
   render: function() {
     // measure will not return anything useful if we dont attach a onLayout handler on android
