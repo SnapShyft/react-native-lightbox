@@ -81,7 +81,7 @@ var Lightbox = React.createClass({
       backgroundColor: this.props.backgroundColor,
       children: this.getContent(),
       onClose: this.onClose,
-      beforeClose: this.beforeClose
+      beforeClose: this.props.beforeClose
     };
   },
 
@@ -124,7 +124,7 @@ var Lightbox = React.createClass({
   },
 
   onClose: function() {
-    this.props.beforeClose();
+
     this.state.layoutOpacity.setValue(1);
     this.setState({
       isOpen: false,
