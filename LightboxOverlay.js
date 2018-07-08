@@ -6,6 +6,7 @@
 var PropTypes = require('prop-types');
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 var {
   Animated,
   Dimensions,
@@ -24,7 +25,7 @@ var WINDOW_WIDTH = Dimensions.get('window').width;
 var DRAG_DISMISS_THRESHOLD = 150;
 var STATUS_BAR_OFFSET = (Platform.OS === 'android' ? -25 : 0);
 
-var LightboxOverlay = React.createClass({
+var LightboxOverlay = createReactClass({
   propTypes: {
     origin: PropTypes.shape({
       x:        PropTypes.number,
