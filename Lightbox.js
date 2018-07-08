@@ -3,11 +3,12 @@
  */
 'use strict';
 
+var PropTypes = require('prop-types');
+
 var React = require('react');
 var {
   Children,
-  cloneElement,
-  PropTypes,
+  cloneElement
 } = React;
 var {
   Animated,
